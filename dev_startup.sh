@@ -2,7 +2,7 @@
 cd ./src
 git clone https://github.com/vt-digital-libraries-platform/dlp-ingest
 cd ./dlp-ingest
-git checkout gui
+git checkout ui
 cd ..
 mv dlp-ingest dlp_ingest
 

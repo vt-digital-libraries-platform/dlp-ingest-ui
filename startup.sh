@@ -3,7 +3,7 @@
 cd /home/ubuntu/dlp-ingest-ui/src
 git clone https://github.com/vt-digital-libraries-platform/dlp-ingest
 cd /home/ubuntu/dlp-ingest-ui/src/dlp-ingest
-git checkout gui
+git checkout ui
 cd /home/ubuntu/dlp-ingest-ui/src
 mv dlp-ingest dlp_ingest
 
