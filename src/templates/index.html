@@ -1,0 +1,19 @@
+<!doctype html>
+    <meta charset="UTF-8"> 
+    <title>VTDLP Ingest</title>
+
+    <h1>VTDLP Ingest</h1>
+    <p>Some usage notes on how to ingest stuff here maybe?</p>
+    <form action="/submit" method="post" enctype="multipart/form-data">
+        <div>
+            <label for="collection-identifier">Identifier:</label>
+            <input type="text" id="collection-identifier" name="collection-identifier" >
+        </div>
+        <div>
+            <input type="file" id="metadata-input" name="metadata-input">
+        </div>
+        <div>
+            <button type="submit" id="ingest-button">Run Ingest</button>
+        </div>
+    </form>
+</html>
