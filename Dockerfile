@@ -4,10 +4,14 @@ WORKDIR /home/ubuntu/dlp-ingest-ui
 EXPOSE 8000
 RUN apt update && apt upgrade -y 
 RUN apt install build-essential git python3-full python3-pip python3-virtualenv wget -y && rm -rf /var/lib/apt/lists/*
+WORKDIR /home/ubuntu/dlp-ingest-ui/src
+RUN git clone --branch ui https://github.com/vt-digital-libraries-platform/dlp-ingest dlp_ingest
+WORKDIR /home/ubuntu/dlp-ingest-ui/
 RUN virtualenv ./venv
 RUN . ./venv/bin/activate
 COPY requirements.txt .
+COPY startup.sh .
+COPY ./src /home/ubuntu/dlp-ingest-ui/src
 RUN ./venv/bin/pip install -r requirements.txt
-COPY . .
 
 CMD ["/bin/bash", "./startup.sh"]

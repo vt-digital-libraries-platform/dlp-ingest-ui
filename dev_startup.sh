@@ -1,10 +1,9 @@
 #!/bin/bash
 cd ./src
-git clone https://github.com/vt-digital-libraries-platform/dlp-ingest
-cd ./dlp-ingest
-git checkout ui
+git clone --branch ui https://github.com/vt-digital-libraries-platform/dlp-ingest dlp_ingest
 cd ..
-mv dlp-ingest dlp_ingest
-
-venv
+virtualenv dlp-ingest-ui-env
+source dlp-ingest-ui-env/bin/activate
+pip install -r requirements.txt
+cd ./src
 GUI=true python -m gunicorn --bind :8000 --workers=1 --threads=15 application
