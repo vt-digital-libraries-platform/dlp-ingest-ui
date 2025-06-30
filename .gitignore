@@ -1,2 +1,5 @@
 dlp-ingest-ui-env/
 src/dlp_ingest/
+src/uploads/
+src/static/yml/*defaults.yml
+!src/static/yml/env_defaults.yml
