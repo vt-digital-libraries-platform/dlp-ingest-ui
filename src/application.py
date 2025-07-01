@@ -66,10 +66,10 @@ def files_exist():
 
 
 def get_input_filename(identifier, file, i, num_files):
-    indexPrefix = ""
-    for j in range(len(str(num_files)) - len(str(i))):
-        indexPrefix += "0"
-    index = f"{indexPrefix}{i}"
+    # indexPrefix = ""
+    # for j in range(len(str(num_files)) - len(str(i))):
+    #     indexPrefix += "0"
+    # index = f"{indexPrefix}{i}"
     return str(file.filename)
     # return f"{identifier}_{index}_{file.filename}"
 
@@ -92,14 +92,13 @@ def save_uploads(identifier, num_files):
 def set_environment(env_values):
     for key, value in env_values:
         if str(key).upper() in env_vars:
-            os.environ[str(key).upper()] = str(value)
+            application.config[str(key).upper()] = str(value)
     print("================================")
 
 
 def set_environment_defaults():
     defaults = None
     env_file = os.path.join(application.config['APPLICATION_ROOT'], 'static', 'yml', os.getenv('INGEST_ENV_YAML'))
-    os.environ['INGEST_APPLICATION_ROOT'] =  application.config['APPLICATION_ROOT']
     with open(env_file, 'r') as f:
         defaults = yaml.safe_load(f)
     if defaults:
@@ -123,7 +122,8 @@ def submit():
         set_environment_overrides()
 
         # Do the ingest
-        dlp_ingest_main(None, None, os.path.join(application.config['UPLOADS'], uploaded[0]))
+        metadata_filepath = os.path.join(application.config['UPLOADS'], uploaded[0])
+        dlp_ingest_main(None, None, metadata_filepath, application.config)
         flash(f"Ingested:")
         flash(uploaded[0])
         flash(f"into collection: {collection_identifier}")
