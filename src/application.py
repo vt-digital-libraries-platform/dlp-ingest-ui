@@ -1,4 +1,4 @@
-import os, shutil, yaml
+import os, shutil, sys, yaml
 from datetime import datetime
 from flask import flash, Flask, render_template, request
 from dlp_ingest.lambda_function import main as dlp_ingest_main
@@ -92,8 +92,7 @@ def save_uploads(identifier, num_files):
 def set_environment(env_values):
     for key, value in env_values:
         if str(key).upper() in env_vars:
-            application.config[str(key).upper()] = str(value)
-    print("================================")
+            application.config[str(key).upper()] = value
 
 
 def set_environment_defaults():
@@ -116,12 +115,13 @@ def set_environment_overrides():
 def submit():
     uploaded = []
     timestamp = str(datetime.today()).replace(" ", "_")
+
+    # set_environment_defaults()
     collection_identifier = get_identifier()
     if request.method == 'POST' and 'metadata_input' in request.files:
         uploaded = save_uploads(collection_identifier, len(request.files.getlist('metadata_input')))
 
     if files_exist():
-        # set_environment_defaults()
         set_environment_overrides()
 
         # Do the ingest
@@ -143,4 +143,5 @@ def index():
 
 if __name__ == "__main__":
     set_environment_defaults()
+
     application.run(host='0.0.0.0', port=8000)
