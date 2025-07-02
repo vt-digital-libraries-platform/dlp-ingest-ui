@@ -9,5 +9,5 @@ pip install -r requirements.txt --quiet
 cd ./src
 clear
 
-INGEST_ENV_YAML="test_env_defaults.yml" \
+export INGEST_ENV_YAML="test_env_defaults.yml"
 GUI=true python -m gunicorn --bind :8000 --workers=1 --threads=15 application

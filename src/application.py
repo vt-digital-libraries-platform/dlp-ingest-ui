@@ -103,6 +103,9 @@ def set_environment_defaults():
         defaults = yaml.safe_load(f)
     if defaults:
         set_environment(defaults.items())
+    else:
+        print(f"Error loading environment defaults from {env_file}")
+        sys.exit(1)
 
 
 def set_environment_overrides():
@@ -118,7 +121,7 @@ def submit():
         uploaded = save_uploads(collection_identifier, len(request.files.getlist('metadata_input')))
 
     if files_exist():
-        set_environment_defaults()
+        # set_environment_defaults()
         set_environment_overrides()
 
         # Do the ingest
