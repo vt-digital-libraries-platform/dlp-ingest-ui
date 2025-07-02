@@ -116,7 +116,7 @@ def submit():
     uploaded = []
     timestamp = str(datetime.today()).replace(" ", "_")
 
-    # set_environment_defaults()
+    set_environment_defaults()
     collection_identifier = get_identifier()
     if request.method == 'POST' and 'metadata_input' in request.files:
         uploaded = save_uploads(collection_identifier, len(request.files.getlist('metadata_input')))
