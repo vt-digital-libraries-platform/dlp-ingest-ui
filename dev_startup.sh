@@ -6,8 +6,7 @@ cd ..
 virtualenv dlp-ingest-ui-env
 source dlp-ingest-ui-env/bin/activate
 pip install -r requirements.txt --quiet
-cd ./src
 clear
 
 export INGEST_ENV_YAML="test_env_defaults.yml"
-GUI=true python -m gunicorn --bind :8000 --workers=1 --threads=15 application
+GUI=true python -m gunicorn --bind :8000 --workers=1 --threads=15 src.application

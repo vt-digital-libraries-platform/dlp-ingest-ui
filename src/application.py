@@ -1,7 +1,7 @@
 import os, shutil, sys, yaml
 from datetime import datetime
 from flask import flash, Flask, render_template, request
-from dlp_ingest.lambda_function import main as dlp_ingest_main
+from src.dlp_ingest.lambda_function import main as dlp_ingest_main
 
 
 application = Flask(__name__)
