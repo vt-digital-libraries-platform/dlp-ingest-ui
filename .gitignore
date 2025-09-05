@@ -2,13 +2,12 @@ dlp-ingest-ui-env/
 src/dlp_ingest/
 src/uploads/
 src/static/yml/*defaults.yml
-src/static/yml/env_defaults.yml
 # Do NOT ignore the example file:
 !src/static/yml/env_defaults_example.yml
-*.yml
 bin/
 lib/
 lib64/
 pyvenv.cfg
 src/__pycache__/
 src/results/
+src/static/yml/env_defaults.yml
