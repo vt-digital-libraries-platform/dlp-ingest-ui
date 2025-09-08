@@ -8,7 +8,10 @@
 </head>
 <body>
 
-    <h1>VTDLP Ingest</h1>
+    <div class="header-bar">
+        <img src="{{ url_for('static', filename='img/logo.png') }}" alt="App Logo" class="app-logo">
+        <h1>VTDLP Ingest</h1>
+    </div>
     <p>This tool ingests media/metadata into the VTDLP Archive system.</p>
     <p>Record type is determined by the metadata filename selected below (*_archive.csv | *_collection.csv)</p>
     <p>1. Ingest Collection metadata file first</p>

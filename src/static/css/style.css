@@ -256,3 +256,18 @@ h3 {
     margin-bottom: 10px;
     display: none;
 }
+
+.header-bar {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 32px;
+    margin-bottom: 24px;
+}
+
+.app-logo {
+    height: 39px;         /* 60px * 0.65 = 39px */
+    max-width: 130px;     /* 200px * 0.65 = 130px */
+    object-fit: contain;
+    margin-right: 16px;
+}
